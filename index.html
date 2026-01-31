@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Love 💕</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&amp;family=Quicksand:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      font-family: 'Quicksand', sans-serif;
+    }
+    
+    .handwritten {
+      font-family: 'Dancing Script', cursive;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      50% { transform: translateY(-20px) rotate(5deg); opacity: 0.8; }
+    }
+    
+    @keyframes fall {
+      0% { transform: translateY(-100%) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100%) rotate(360deg); opacity: 0; }
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(255, 182, 193, 0.4); }
+      50% { box-shadow: 0 0 40px rgba(255, 182, 193, 0.8); }
+    }
+    
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+    
+    @keyframes slide-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    @keyframes heart-beat {
+      0%, 100% { transform: scale(1); }
+      25% { transform: scale(1.1); }
+      50% { transform: scale(1); }
+      75% { transform: scale(1.1); }
+    }
+    
+    .floating-heart {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .falling {
+      animation: fall 4s linear forwards;
+    }
+    
+    .pulse-btn {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    
+    .slide-up {
+      animation: slide-up 0.8s ease-out forwards;
+    }
+    
+    .heart-beat {
+      animation: heart-beat 1.5s ease-in-out infinite;
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(-45deg, #fce4ec, #f8bbd9, #e1bee7, #f3e5f5, #fce4ec);
+      background-size: 400% 400%;
+      animation: gradient-shift 15s ease infinite;
+    }
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+    
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+    
+    .sparkle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, #fff 0%, transparent 70%);
+      border-radius: 50%;
+      animation: sparkle 2s ease-in-out infinite;
+    }
+    
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      pointer-events: none;
+      z-index: 1000;
+    }
+    
+    .secret-reveal {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out, opacity 0.5s ease-out, padding 0.5s ease-out;
+      opacity: 0;
+    }
+    
+    .secret-reveal.show {
+      max-height: 200px;
+      opacity: 1;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app-wrapper" class="gradient-bg h-full w-full overflow-auto relative"><!-- Floating Elements Container -->
+   <div id="floating-elements" class="fixed inset-0 pointer-events-none overflow-hidden z-10"></div><!-- Sparkles -->
+   <div class="fixed inset-0 pointer-events-none z-5">
+    <div class="sparkle" style="top: 10%; left: 20%;"></div>
+    <div class="sparkle delay-200" style="top: 30%; left: 80%;"></div>
+    <div class="sparkle delay-400" style="top: 60%; left: 15%;"></div>
+    <div class="sparkle delay-100" style="top: 80%; left: 70%;"></div>
+    <div class="sparkle delay-300" style="top: 45%; left: 50%;"></div>
+   </div><!-- Main Content -->
+   <div class="relative z-20 min-h-full"><!-- Hero Section -->
+    <section class="min-h-screen flex flex-col items-center justify-center px-4 py-16 text-center">
+     <div class="slide-up">
+      <div class="text-6xl mb-6 heart-beat">
+       💕
+      </div>
+      <h1 id="hero-title" class="handwritten text-5xl md:text-7xl font-bold mb-6" style="color: #d81b60;">For the Girl Who Owns My Heart</h1>
+      <p id="hero-subtitle" class="text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed" style="color: #ad1457;">Every moment with you feels like a beautiful dream I never want to wake up from. You are my sunshine, my happiness, my everything. 💫</p>
+     </div>
+     <div class="mt-12 slide-up delay-300">
+      <div class="flex gap-4 text-4xl"><span class="floating-heart">🌸</span> <span class="floating-heart delay-200">💖</span> <span class="floating-heart delay-400">🌹</span>
+      </div>
+     </div>
+     <div class="mt-8 slide-up delay-500">
+      <svg class="w-8 h-8 animate-bounce mx-auto" style="color: #ec407a;" fill="currentColor" viewbox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+      </svg>
+     </div>
+    </section><!-- Love Letter Section -->
+    <section class="py-20 px-4">
+     <div class="max-w-3xl mx-auto">
+      <div class="glass-card rounded-3xl p-8 md:p-12 shadow-xl slide-up">
+       <div class="text-center mb-8"><span class="text-5xl">💌</span>
+        <h2 class="handwritten text-4xl mt-4" style="color: #d81b60;">My Love Letter to You</h2>
+       </div>
+       <div class="relative">
+        <div class="absolute -top-4 -left-4 text-6xl opacity-20" style="color: #f48fb1;">
+         "
+        </div>
+        <p id="love-letter" class="text-lg md:text-xl leading-relaxed text-center px-4 handwritten" style="color: #880e4f;">My dearest love, from the moment you walked into my life, everything changed. Your smile lights up my darkest days, your laugh is the sweetest melody I've ever heard. You make me want to be a better person every single day. I fall more in love with you with every passing moment. You are not just my girlfriend, you are my best friend, my soulmate, my forever. I promise to cherish you, protect you, and love you with all my heart until the end of time. You are the most beautiful gift life has ever given me. 💕</p>
+        <div class="absolute -bottom-4 -right-4 text-6xl opacity-20" style="color: #f48fb1;">
+         "
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Our Moments Section -->
+    <section class="py-20 px-4">
+     <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12 slide-up"><span class="text-5xl">🌸</span>
+       <h2 class="handwritten text-4xl mt-4" style="color: #d81b60;">Our Beautiful Moments</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+       <div class="glass-card rounded-2xl p-6 text-center transform hover:scale-105 transition-all duration-300 slide-up delay-100">
+        <div class="text-4xl mb-4">
+         ✨
+        </div>
+        <h3 class="handwritten text-2xl mb-2" style="color: #d81b60;">First Glance</h3>
+        <p id="moment-1" class="text-sm" style="color: #ad1457;">The day we first met, I knew my life would never be the same. Your eyes captured my heart instantly.</p>
+       </div>
+       <div class="glass-card rounded-2xl p-6 text-center transform hover:scale-105 transition-all duration-300 slide-up delay-200">
+        <div class="text-4xl mb-4">
+         💫
+        </div>
+        <h3 class="handwritten text-2xl mb-2" style="color: #d81b60;">First Laugh</h3>
+        <p id="moment-2" class="text-sm" style="color: #ad1457;">Our first laugh together made me realize how perfectly we fit. Your joy became my favorite sound.</p>
+       </div>
+       <div class="glass-card rounded-2xl p-6 text-center transform hover:scale-105 transition-all duration-300 slide-up delay-300">
+        <div class="text-4xl mb-4">
+         💝
+        </div>
+        <h3 class="handwritten text-2xl mb-2" style="color: #d81b60;">The Moment</h3>
+        <p id="moment-3" class="text-sm" style="color: #ad1457;">When I knew you were the one, my heart whispered forever. That moment changed my universe.</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Secret Message Section -->
+    <section class="py-20 px-4">
+     <div class="max-w-2xl mx-auto text-center">
+      <div class="glass-card rounded-3xl p-8 slide-up"><span class="text-5xl">🔮</span>
+       <h2 class="handwritten text-3xl mt-4 mb-6" style="color: #d81b60;">A Secret Just For You</h2>
+       <p class="mb-6" style="color: #ad1457;">Click the button below to reveal a special message...</p><button id="secret-btn" class="px-8 py-4 rounded-full text-white font-semibold transform hover:scale-105 transition-all duration-300 pulse-btn" style="background: linear-gradient(135deg, #ec407a, #d81b60);"> 💌 Reveal My Secret </button>
+       <div id="secret-message" class="secret-reveal mt-6 glass-card rounded-2xl">
+        <p class="handwritten text-xl p-6" style="color: #880e4f;">Every night before I sleep, I thank the universe for bringing you into my life. You are my last thought at night and my first thought every morning. I love you more than words could ever express. 💕✨</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Will You Be Mine Section -->
+    <section class="py-20 px-4">
+     <div class="max-w-2xl mx-auto text-center">
+      <div class="glass-card rounded-3xl p-10 slide-up">
+       <div class="text-6xl mb-6 heart-beat">
+        🌹
+       </div>
+       <h2 class="handwritten text-4xl mb-6" style="color: #d81b60;">One More Thing...</h2>
+       <p class="text-lg mb-8" style="color: #ad1457;">I have a very important question for you...</p><button id="mine-btn" class="px-10 py-5 rounded-full text-white text-xl font-bold transform hover:scale-110 transition-all duration-300 pulse-btn shadow-2xl" style="background: linear-gradient(135deg, #f06292, #d81b60, #c2185b);"> 💖 Will You Be Mine Forever? 💖 </button>
+       <div id="mine-response" class="mt-8 hidden">
+        <div class="text-6xl mb-4">
+         💕🎉💕
+        </div>
+        <p class="handwritten text-3xl" style="color: #d81b60;">You just made me the happiest person alive!</p>
+        <p class="mt-2 text-lg" style="color: #ad1457;">I promise to love you forever and always 💍</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Footer -->
+    <section class="py-16 px-4 text-center">
+     <div class="slide-up">
+      <div class="flex justify-center gap-4 text-3xl mb-6"><span class="floating-heart">💕</span> <span class="floating-heart delay-100">🌸</span> <span class="floating-heart delay-200">✨</span> <span class="floating-heart delay-300">💖</span> <span class="floating-heart delay-400">🌹</span>
+      </div>
+      <p id="footer-text" class="handwritten text-2xl md:text-3xl" style="color: #d81b60;">No matter where we are, my heart is always with you ❤️</p>
+      <p class="mt-4 text-sm" style="color: #ad1457;">Made with all my love, just for you 💕</p>
+     </div>
+    </section>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      hero_title: "For the Girl Who Owns My Heart",
+      hero_subtitle: "Every moment with you feels like a beautiful dream I never want to wake up from. You are my sunshine, my happiness, my everything. 💫",
+      love_letter_text: "My dearest love, from the moment you walked into my life, everything changed. Your smile lights up my darkest days, your laugh is the sweetest melody I've ever heard. You make me want to be a better person every single day. I fall more in love with you with every passing moment. You are not just my girlfriend, you are my best friend, my soulmate, my forever. I promise to cherish you, protect you, and love you with all my heart until the end of time. You are the most beautiful gift life has ever given me. 💕",
+      moment_one: "The day we first met, I knew my life would never be the same. Your eyes captured my heart instantly.",
+      moment_two: "Our first laugh together made me realize how perfectly we fit. Your joy became my favorite sound.",
+      moment_three: "When I knew you were the one, my heart whispered forever. That moment changed my universe.",
+      secret_message: "Every night before I sleep, I thank the universe for bringing you into my life. You are my last thought at night and my first thought every morning. I love you more than words could ever express. 💕✨",
+      footer_text: "No matter where we are, my heart is always with you ❤️",
+      primary_color: "#d81b60",
+      secondary_color: "#ad1457",
+      accent_color: "#f48fb1",
+      bg_color: "#fce4ec",
+      text_color: "#880e4f"
+    };
+    
+    // Create floating hearts and petals
+    function createFloatingElements() {
+      const container = document.getElementById('floating-elements');
+      const hearts = ['💕', '💖', '💗', '💓', '❤️'];
+      const petals = ['🌸', '🌺', '🌷'];
+      
+      for (let i = 0; i < 15; i++) {
+        const element = document.createElement('div');
+        const isHeart = Math.random() > 0.4;
+        element.textContent = isHeart ? hearts[Math.floor(Math.random() * hearts.length)] : petals[Math.floor(Math.random() * petals.length)];
+        element.className = 'absolute text-2xl floating-heart';
+        element.style.left = Math.random() * 100 + '%';
+        element.style.top = Math.random() * 100 + '%';
+        element.style.animationDelay = Math.random() * 3 + 's';
+        element.style.opacity = 0.6;
+        container.appendChild(element);
+      }
+    }
+    
+    // Create falling petals
+    function createFallingPetals() {
+      const petals = ['🌸', '🌺', '🌷', '💮', '🏵️'];
+      for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+          const petal = document.createElement('div');
+          petal.textContent = petals[Math.floor(Math.random() * petals.length)];
+          petal.className = 'fixed text-2xl falling pointer-events-none z-50';
+          petal.style.left = Math.random() * 100 + '%';
+          petal.style.top = '-50px';
+          document.body.appendChild(petal);
+          
+          setTimeout(() => petal.remove(), 4000);
+        }, i * 100);
+      }
+    }
+    
+    // Create confetti explosion
+    function createConfetti() {
+      const colors = ['#ff6b9d', '#ffc0cb', '#ff1493', '#ff69b4', '#ffb6c1', '#f8bbd9', '#e1bee7'];
+      const shapes = ['❤️', '💕', '💖', '✨', '🌟', '🌸', '💗'];
+      
+      for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+          const confetti = document.createElement('div');
+          confetti.className = 'confetti';
+          confetti.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+          confetti.style.left = 50 + (Math.random() - 0.5) * 100 + '%';
+          confetti.style.top = '50%';
+          confetti.style.fontSize = Math.random() * 20 + 15 + 'px';
+          document.body.appendChild(confetti);
+          
+          const angle = Math.random() * Math.PI * 2;
+          const velocity = Math.random() * 15 + 10;
+          const vx = Math.cos(angle) * velocity;
+          const vy = Math.sin(angle) * velocity - 10;
+          let x = 0, y = 0, rotation = 0;
+          
+          const animate = () => {
+            x += vx;
+            y += vy + 0.5;
+            rotation += 10;
+            confetti.style.transform = `translate(${x}px, ${y}px) rotate(${rotation}deg)`;
+            confetti.style.opacity = Math.max(0, 1 - y / 500);
+            
+            if (y < 500) {
+              requestAnimationFrame(animate);
+            } else {
+              confetti.remove();
+            }
+          };
+          requestAnimationFrame(animate);
+        }, i * 30);
+      }
+    }
+    
+    // Secret message reveal
+    document.getElementById('secret-btn').addEventListener('click', function() {
+      const secretMessage = document.getElementById('secret-message');
+      secretMessage.classList.toggle('show');
+      this.textContent = secretMessage.classList.contains('show') ? '💝 Hide My Secret' : '💌 Reveal My Secret';
+      if (secretMessage.classList.contains('show')) {
+        createFallingPetals();
+      }
+    });
+    
+    // Will you be mine button
+    document.getElementById('mine-btn').addEventListener('click', function() {
+      const response = document.getElementById('mine-response');
+      response.classList.remove('hidden');
+      this.textContent = '💕 YES! Forever Yours! 💕';
+      this.style.background = 'linear-gradient(135deg, #4caf50, #2e7d32)';
+      createConfetti();
+      createFallingPetals();
+      
+      // Extra celebration
+      setTimeout(createConfetti, 500);
+      setTimeout(createFallingPetals, 1000);
+    });
+    
+    // Initialize floating elements
+    createFloatingElements();
+    
+    // Element SDK Integration
+    async function onConfigChange(config) {
+      document.getElementById('hero-title').textContent = config.hero_title || defaultConfig.hero_title;
+      document.getElementById('hero-subtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+      document.getElementById('love-letter').textContent = config.love_letter_text || defaultConfig.love_letter_text;
+      document.getElementById('moment-1').textContent = config.moment_one || defaultConfig.moment_one;
+      document.getElementById('moment-2').textContent = config.moment_two || defaultConfig.moment_two;
+      document.getElementById('moment-3').textContent = config.moment_three || defaultConfig.moment_three;
+      
+      const secretEl = document.querySelector('#secret-message p');
+      if (secretEl) {
+        secretEl.textContent = config.secret_message || defaultConfig.secret_message;
+      }
+      
+      document.getElementById('footer-text').textContent = config.footer_text || defaultConfig.footer_text;
+      
+      // Apply colors
+      const primaryColor = config.primary_color || defaultConfig.primary_color;
+      const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      
+      document.getElementById('hero-title').style.color = primaryColor;
+      document.getElementById('hero-subtitle').style.color = secondaryColor;
+      document.getElementById('love-letter').style.color = textColor;
+      document.getElementById('footer-text').style.color = primaryColor;
+      
+      document.querySelectorAll('h2.handwritten').forEach(el => el.style.color = primaryColor);
+      document.querySelectorAll('h3.handwritten').forEach(el => el.style.color = primaryColor);
+    }
+    
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => config.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              config.secondary_color = value;
+              window.elementSdk.setConfig({ secondary_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+    
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["hero_title", config.hero_title || defaultConfig.hero_title],
+        ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+        ["love_letter_text", config.love_letter_text || defaultConfig.love_letter_text],
+        ["moment_one", config.moment_one || defaultConfig.moment_one],
+        ["moment_two", config.moment_two || defaultConfig.moment_two],
+        ["moment_three", config.moment_three || defaultConfig.moment_three],
+        ["secret_message", config.secret_message || defaultConfig.secret_message],
+        ["footer_text", config.footer_text || defaultConfig.footer_text]
+      ]);
+    }
+    
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c667e56d4519ac8',t:'MTc2OTgzNDAzNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
